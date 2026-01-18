@@ -1,0 +1,38 @@
+name: 🚀 Deploy Static Website to Nginx
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🚚 Sync files to server
+        run: |
+          rsync -avz --delete \
+          --exclude='.git*' \
+          ./ ubuntu@${{ secrets.SERVER_HOST }}:/var/www/html/
+
+      - name: 🔄 Reload Nginx
+        run: |
+          ssh ubuntu@${{ secrets.SERVER_HOST }} "sudo systemctl reload nginx"
+
+      - name: ✅ Deployment complete
+        run: echo "Deployment successful 🎉"
