@@ -15,6 +15,9 @@ import {
 } from './data/portfolio.js'
 import './App.css'
 
+import GlowCursor from './components/GlowCursor/GlowCursor.jsx'
+import SlingButton from './components/SlingButton/SlingButton.jsx'
+
 function SkillCard({ group, index }) {
   return (
     <Reveal delay={index * 90} className="skill-card">
@@ -52,6 +55,8 @@ function ContactIcon({ type }) {
   return <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.5 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.3.7 1 .7 1.9v3.3c0 .3.2.7.8.6A11.1 11.1 0 0 0 12 .9Z"/></svg>
 }
 
+const isTouch = window.matchMedia('(pointer: coarse)').matches
+
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
   const filters = ['All', 'Web', 'React', 'Java']
@@ -62,6 +67,18 @@ function App() {
 
   return (
     <>
+      <GlowCursor
+      color="#f0a5bd"
+      quality={isTouch ? 'low' : 'high'}
+      maxDevicePixelRatio={isTouch ? 1.5 : 2}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        pointerEvents: 'none',
+        mixBlendMode: 'screen',
+      }}
+    />
       <Navbar />
       <main>
         <Hero />
@@ -179,9 +196,20 @@ function App() {
 
       <footer className="site-footer">
         <div className="container footer-inner">
-          <a className="footer-brand" href="#top">oneli<span>.</span>me</a>
-          <p>Built with curiosity, React & a lot of coffee-free debugging.</p>
-          <span>© {new Date().getFullYear()} Oneli Premarathne</span>
+          <a className="footer-brand" href="#top">
+            oneli<span>.</span>me
+          </a>
+          <div className="footer-center">
+            <p>Built with curiosity, React & a lot of coffee-free debugging.</p>
+
+            <SlingButton
+              onSend={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            />
+            <p style={{color:"#965d6f"}}>Drag your way back to the top.</p>
+          </div>
+          <span className="footer-copyright">
+            © {new Date().getFullYear()} Oneli Premarathne
+          </span>
         </div>
       </footer>
     </>
