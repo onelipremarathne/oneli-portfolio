@@ -10,6 +10,42 @@ function ProjectVisual({ type, number }) {
   return (
     <div className={`project-visual project-visual-${type}`} aria-hidden="true">
       <div className="project-visual-top"><span /><span /><span /><small>PROJECT_{number}</small></div>
+      {type === 'life-reset' && (
+        <div className="mock-life-reset">
+          <div className="mock-life-heading">
+            <div>
+              <small>YOUR DAILY SPACE</small>
+              <strong>Life Reset<span>.</span></strong>
+            </div>
+            <div className="mock-life-streak">🔥 7 DAYS</div>
+          </div>
+
+          <div className="mock-life-xp">
+            <div><span>LEVEL 03</span><span>240 / 300 XP</span></div>
+            <div className="mock-life-xp-track"><span /></div>
+          </div>
+
+          <div className="mock-life-habits">
+            <div className="mock-life-habit mock-life-complete">
+              <span>✓</span>
+              <div><strong>Morning routine</strong><small>DAILY HABIT</small></div>
+            </div>
+            <div className="mock-life-habit mock-life-complete">
+              <span>✓</span>
+              <div><strong>Read for 20 minutes</strong><small>DAILY HABIT</small></div>
+            </div>
+            <div className="mock-life-habit">
+              <span>○</span>
+              <div><strong>Evening reflection</strong><small>DAILY HABIT</small></div>
+            </div>
+          </div>
+
+          <div className="mock-life-footer">
+            <span>DAILY PROGRESS</span>
+            <strong>2 / 3 completed</strong>
+          </div>
+        </div>
+      )}
       {type === 'quiz' && (
         <div className="mock-quiz">
           <div className="mock-label">QUESTION 03 / 10</div>
@@ -46,6 +82,19 @@ function ProjectVisual({ type, number }) {
           <div className="mock-word-tags"><span>meaning</span><span>phonetics</span><span>examples</span></div>
         </div>
       )}
+      {type === 'lifelink' && (
+      <div className="mock-lifelink">
+        <div className="mock-lifelink-icon">🩸</div>
+        <small>BLOOD DONATION</small>
+        <strong>LifeLink</strong>
+        <p>Every donation connects a life.</p>
+        <div className="mock-lifelink-stats">
+          <span>DONATE</span>
+          <span>CONNECT</span>
+          <span>SAVE LIVES</span>
+        </div>
+      </div>
+      )}
       <span className="project-visual-glow" />
     </div>
   )
@@ -63,8 +112,17 @@ export default function ProjectCard({ project }) {
           {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
         </div>
         <div className="project-links">
-          <a href={project.github} target="_blank" rel="noreferrer">GitHub <ExternalArrow /></a>
-          {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live demo <ExternalArrow /></a>}
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noreferrer">
+              {project.githubLabel || 'GitHub'} <ExternalArrow />
+            </a>
+          )}
+
+          {project.demo && (
+            <a href={project.demo} target="_blank" rel="noreferrer">
+              Live demo <ExternalArrow />
+            </a>
+          )}
         </div>
       </div>
     </article>
