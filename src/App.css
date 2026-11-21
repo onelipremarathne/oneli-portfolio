@@ -834,14 +834,18 @@
 }
 
 .project-visual {
-  position: relative;
-  display: flex;
+  height: 250px;
   min-height: 250px;
+  max-height: 250px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  display: flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(245, 229, 241, 0.08);
-  background: #211821;
   isolation: isolate;
 }
 
@@ -858,6 +862,143 @@
 .project-visual-nic { background-color: #201723; }
 .project-visual-banking { background-color: #131d1a; }
 .project-visual-dictionary { background-color: #1e1721; }
+
+
+
+/* Life Reset */
+.project-visual-life-reset {
+  background-color: #201e1a;
+}
+
+.project-visual-life-reset .project-visual-glow {
+  background: rgba(218, 164, 91, 0.13);
+}
+
+.mock-life-reset {
+  position: relative;
+  z-index: 1;
+  width: min(82%, 340px);
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(218, 164, 91, 0.2);
+  border-radius: 12px;
+  background: rgba(15, 15, 14, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.mock-life-heading,
+.mock-life-xp > div,
+.mock-life-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mock-life-heading > div:first-child,
+.mock-life-habit > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mock-life-heading small,
+.mock-life-xp > div,
+.mock-life-habit small,
+.mock-life-footer {
+  color: #aaa69b;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+}
+
+.mock-life-heading strong {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  letter-spacing: -0.8px;
+}
+
+.mock-life-heading strong span {
+  color: #d9a45b;
+}
+
+.mock-life-streak {
+  padding: 5px 8px;
+  border: 1px solid rgba(217, 164, 91, 0.25);
+  border-radius: 20px;
+  color: #e5b875;
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.mock-life-xp {
+  margin: 12px 0;
+}
+
+.mock-life-xp > div:first-child {
+  color: #d9a45b;
+  font-size: 8px;
+}
+
+.mock-life-xp-track {
+  height: 4px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #414139;
+}
+
+.mock-life-xp-track span {
+  display: block;
+  width: 80%;
+  height: 100%;
+  border-radius: inherit;
+  background: #d9a45b;
+}
+
+.mock-life-habits {
+  display: grid;
+  gap: 5px;
+}
+
+.mock-life-habit {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.mock-life-habit > span {
+  color: #aaa69b;
+  font-size: 14px;
+}
+
+.mock-life-complete > span {
+  color: #d9a45b;
+}
+
+.mock-life-habit strong {
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.mock-life-habit small {
+  font-size: 7px;
+}
+
+.mock-life-footer {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mock-life-footer strong {
+  color: #e5b875;
+  font-size: 8px;
+}
+
 
 .project-visual-top {
   position: absolute;
@@ -1109,6 +1250,60 @@
 .project-links a:hover { color: var(--color-accent); }
 .project-links svg { width: 14px; height: 14px; color: var(--color-accent); }
 
+/* LifeLink */
+.project-visual-lifelink {
+  background-color: #211c20;
+}
+
+.mock-lifelink {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(75%, 310px);
+  padding: 18px 19px;
+  border: 1px solid rgba(240, 165, 189, 0.18);
+  border-radius: 10px;
+  background: rgba(15, 13, 20, 0.9);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.23);
+  text-align: center;
+}
+
+.mock-lifelink-icon {
+  margin-bottom: 8px;
+  font-size: 25px;
+}
+
+.mock-lifelink > small {
+  color: #d88b91;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.mock-lifelink > strong {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-heading);
+  font-size: 23px;
+}
+
+.mock-lifelink > p {
+  margin: 7px 0 0;
+  color: #aaa;
+  font-size: 10px;
+}
+
+.mock-lifelink-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d88b91;
+  font-size: 8px;
+  letter-spacing: 0.05em;
+}
+
 /* Timeline */
 .section-journey .section-heading {
   margin-bottom: 55px;
@@ -1271,18 +1466,15 @@
   justify-content: space-between;
 }
 
-.activity-initials {
-  display: grid;
-  width: 41px;
-  height: 41px;
-  place-items: center;
-  border: 1px solid rgba(240, 165, 189, 0.27);
-  border-radius: 13px;
-  background: rgba(240, 165, 189, 0.07);
-  color: var(--color-accent);
-  font-family: var(--font-heading);
-  font-size: 18px;
-  font-weight: 600;
+.activity-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+
+  border-radius: 15px;
+  padding: 2px;
+  background:local;
+  
 }
 
 .activity-arrow {

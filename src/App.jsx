@@ -59,7 +59,7 @@ const isTouch = window.matchMedia('(pointer: coarse)').matches
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('All')
-  const filters = ['All', 'Web', 'React', 'Java']
+  const filters = ['All', 'Full Stack', 'Mobile Development', 'React', 'Java']
   const filteredProjects = useMemo(
     () => activeFilter === 'All' ? projects : projects.filter((project) => project.category === activeFilter),
     [activeFilter],
@@ -166,7 +166,7 @@ function App() {
             <div className="activities-grid">
               {activities.map((activity, index) => (
                 <Reveal key={activity.title} delay={index * 75} className="activity-card">
-                  <div className="activity-card-top"><span className="activity-initials">{activity.initials}</span><span className="activity-arrow" aria-hidden="true">↗</span></div>
+                  <div className="activity-card-top"><img src={activity.logo} alt={`${activity.title} logo`} className="activity-logo" /><span className="activity-arrow" aria-hidden="true">↗</span></div>
                   <h3>{activity.title}</h3>
                   <span className="activity-role">{activity.role}</span>
                   <p>{activity.description}</p>
